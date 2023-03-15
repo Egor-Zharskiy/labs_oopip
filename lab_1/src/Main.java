@@ -40,6 +40,10 @@ public class Main{
                 ShopWindow.findDessert(shopWindow);
                 break;
 
+            case 6:
+                shopWindow = ShopWindow.deleteDessert(shopWindow);
+                break;
+
             default:
                 flag = false;
         }
