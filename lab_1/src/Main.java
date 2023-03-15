@@ -41,7 +41,13 @@ public class Main{
                 break;
 
             case 6:
-                shopWindow = ShopWindow.deleteDessert(shopWindow);
+                int size = shopWindow.size();
+                if (size > 0){
+                    shopWindow = ShopWindow.deleteDessert(shopWindow);
+                }
+                else{
+                    System.out.println("витрина пуста");
+                }
                 break;
 
             default:

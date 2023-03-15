@@ -76,7 +76,6 @@ public class ShopWindow {
 
         flag = true;
         for(Dessert ds: desserts){
-            System.out.println(ds.toString());
             if (ds.getCalories() >= minCal && ds.getCalories() <= maxCal){
                 if (flag)
                     flag = false;
@@ -90,6 +89,7 @@ public class ShopWindow {
 
 
     public static ArrayList<Dessert> deleteDessert(ArrayList<Dessert> shopWindow) {
+        // если витрина не пуста, только тогда запускаем
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;
         int size = shopWindow.size();
