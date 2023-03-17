@@ -79,7 +79,7 @@ public class ShopWindow {
             if (ds.getCalories() >= minCal && ds.getCalories() <= maxCal){
                 if (flag)
                     flag = false;
-                System.out.println(ds.toString() + "входит в диапазон");
+                System.out.println(ds.toString() + "\nвходит в диапазон");
             }
         }
         if (flag)
@@ -111,6 +111,5 @@ public class ShopWindow {
 
         return shopWindow;
     }
-
     }
 

@@ -6,8 +6,4 @@ public class Cake extends Dessert{
         this.price = price;
         this.calories = calories;
     }
-
-
-
-
 }
