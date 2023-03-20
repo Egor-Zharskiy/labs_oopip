@@ -4,25 +4,18 @@ import java.util.*;
 
 public class ShopWindow {
 
-
     public static ArrayList<Dessert> fillShop(ArrayList<Dessert> desserts, ArrayList<Dessert> shopWindow){
         System.out.println("выберите десерт из списка, который вы бы хотели добавить на витрину");
-
         int i = 1, choice = 0, size = desserts.size();
         Scanner scanner = new Scanner(System.in);
 
         Menu.printList(desserts);
 
-//        for (Dessert ds: desserts){
-//            System.out.println(i + " - " + ds);
-//            i++;
-//        }
-//        i++;
         System.out.println("0 - выход из добавления десертов.");
 
         while(true){
             choice = scanner.nextInt();
-            if (choice >= 1 && choice <= size + 1)
+            if (choice >= 1 && choice <= size)
                 shopWindow.add(desserts.get(choice - 1));
             else if (choice != 0)
                 System.out.println("вы неверно выбрали номер десерта.");
@@ -48,7 +41,7 @@ public class ShopWindow {
         desserts.sort(new Comparator<Dessert>() {
             @Override
             public int compare(Dessert o1, Dessert o2) {
-                return (o1.getCalories() -o2.getCalories());
+                return (int) (o1.getPrice() - o2.getPrice());
             }
         });
 
@@ -79,7 +72,7 @@ public class ShopWindow {
             if (ds.getCalories() >= minCal && ds.getCalories() <= maxCal){
                 if (flag)
                     flag = false;
-                System.out.println(ds.toString() + "\nвходит в диапазон");
+                System.out.println(ds.toString() + " входит в диапазон");
             }
         }
         if (flag)
@@ -88,7 +81,7 @@ public class ShopWindow {
     }
 
 
-    public static ArrayList<Dessert> deleteDessert(ArrayList<Dessert> shopWindow) {
+    public static void  deleteDessert(ArrayList<Dessert> shopWindow) {
         // если витрина не пуста, только тогда запускаем
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;
@@ -108,8 +101,6 @@ public class ShopWindow {
 
         System.out.println("новый список десертов:");
         Menu.printList(shopWindow);
-
-        return shopWindow;
     }
     }
 

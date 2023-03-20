@@ -1,10 +1,10 @@
 import desserts.*;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class Main{
+
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         ArrayList<Dessert> desserts = new ArrayList<>();
@@ -43,7 +43,7 @@ public class Main{
             case 6:
                 int size = shopWindow.size();
                 if (size > 0){
-                    shopWindow = ShopWindow.deleteDessert(shopWindow);
+                    ShopWindow.deleteDessert(shopWindow);
                 }
                 else{
                     System.out.println("витрина пуста");

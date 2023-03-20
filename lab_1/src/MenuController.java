@@ -1,8 +1,5 @@
 import desserts.*;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -15,7 +12,7 @@ public class MenuController {
         name = scanner.nextLine();
         System.out.println("введите калорийность десерта");
         cal = scanner.nextInt();
-        System.out.println("введите цену сея ебучего десерта");
+        System.out.println("введите цену десерта");
         price = scanner.nextFloat();
         dessert.setName(name);
         dessert.setPrice(price);
@@ -23,37 +20,30 @@ public class MenuController {
         table.add(dessert);
         return table;
     }
-    public static ArrayList<Dessert> createDessert(ArrayList<Dessert> list){
+    public static void createDessert(ArrayList<Dessert> list){
         System.out.println("Выберите десерт для создания\n1 - маффин\n2 - торт\n3 - трюфель");
-        char key;
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        int cal = 0;
+        Scanner scanner = new Scanner(System.in);
+        int cal = 0, key;
         String name = "";
         float price = 0f;
 
-        try {
-            key = br.readLine().charAt(0);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        key = scanner.nextInt();
 
         switch (key){
-            case '1':
+            case 1:
                 Maffin mf = new Maffin("", 0f, 0);
                 list = input(name, cal, price, mf, list);
                 break;
-            case '2':
+            case 2:
                 Cake ck = new Cake("", 0f, 0);
                 list = input(name, cal, price, ck, list);
                 break;
-            case '3':
+            case 3:
                 Truffle trf = new Truffle("", 0f, 0);
                 list = input(name, cal, price, trf, list);
                 break;
         }
 
-        return list;
     }
 }
