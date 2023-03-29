@@ -4,9 +4,9 @@ import java.util.*;
 
 public class ShopWindow {
 
-    public static ArrayList<Dessert> fillShop(ArrayList<Dessert> desserts, ArrayList<Dessert> shopWindow){
+    public static void fillShop(ArrayList<Dessert> desserts, ArrayList<Dessert> shopWindow){
         System.out.println("выберите десерт из списка, который вы бы хотели добавить на витрину");
-        int i = 1, choice = 0, size = desserts.size();
+        int choice = 0, size = desserts.size();
         Scanner scanner = new Scanner(System.in);
 
         Menu.printList(desserts);
@@ -23,7 +23,6 @@ public class ShopWindow {
                 break;
         }
 
-        return shopWindow;
 
     }
 
@@ -72,12 +71,11 @@ public class ShopWindow {
             if (ds.getCalories() >= minCal && ds.getCalories() <= maxCal){
                 if (flag)
                     flag = false;
-                System.out.println(ds.toString() + " входит в диапазон");
+                System.out.println(ds + " входит в диапазон");
             }
         }
         if (flag)
             System.out.println("ни один десерт не подходит под заданный диапазон");
-
     }
 
 

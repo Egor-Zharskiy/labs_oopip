@@ -30,6 +30,7 @@ public class MenuController {
 
         key = scanner.nextInt();
 
+
         switch (key){
             case 1:
                 Maffin mf = new Maffin("", 0f, 0);

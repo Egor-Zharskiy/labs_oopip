@@ -6,6 +6,23 @@ import java.util.Scanner;
 public class Main{
 
     public static void main(String[] args) {
+        example exmpl1 = new example();
+        example exmpl2 = new example();
+        example exmpl3 = new example();
+        example exmpl4 = new example();
+        example exmpl5 = new example();
+        ArrayList<example> l = new ArrayList<>();
+        l.add(exmpl1);
+        l.add(exmpl2);
+        l.add(exmpl3);
+        l.add(exmpl4);
+        l.add(exmpl5);
+        exmpl5.name = "string";
+        for(example ds: l){
+            System.out.println(ds.name);
+        }
+
+
         Scanner scan = new Scanner(System.in);
         ArrayList<Dessert> desserts = new ArrayList<>();
         ArrayList<Dessert> shopWindow = new ArrayList<>();
@@ -15,6 +32,7 @@ public class Main{
 
     int x;
     boolean flag = true;
+
 
     do {
         Menu.printMenu();
