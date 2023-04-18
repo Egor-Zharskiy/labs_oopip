@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class MenuController {
 
-    public static ArrayList<Dessert> input(String name, int cal, float price, Dessert dessert, ArrayList<Dessert> table){
+    public ArrayList<Dessert> input(String name, int cal, float price, Dessert dessert, ArrayList<Dessert> table){
         Scanner scanner = new Scanner(System.in);
 
         while(true) {
@@ -17,8 +17,13 @@ public class MenuController {
                 cal = Integer.parseInt(scanner.nextLine());
                 System.out.println("введите цену десерта");
                 price = Float.parseFloat(scanner.nextLine());
+                if (cal < 0 || price < 0) throw new Exception1(this.toString());
             }catch (NumberFormatException e){
                 System.out.println("Неверный ввод");
+                continue;
+            }catch (Exception1 e){
+                System.out.println("Введены отрицательные значения");
+                continue;
             }
 
             dessert.setName(name);
@@ -28,7 +33,7 @@ public class MenuController {
             return table;
         }
     }
-    public static void createDessert(ArrayList<Dessert> list){
+    public void createDessert(ArrayList<Dessert> list){
         System.out.println("Выберите десерт для создания\n1 - маффин\n2 - торт\n3 - трюфель");
 
         Scanner scanner = new Scanner(System.in);
@@ -52,6 +57,9 @@ public class MenuController {
                 Truffle trf = new Truffle("", 0f, 0);
                 list = input(name, cal, price, trf, list);
                 break;
+            default:
+                System.out.println("Неверный выбор");
+
         }
 
     }

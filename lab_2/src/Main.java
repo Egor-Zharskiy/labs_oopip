@@ -9,6 +9,7 @@ public class Main{
 
         Scanner scan = new Scanner(System.in);
         ShopWindow sw = new ShopWindow();
+        MenuController mc = new MenuController();
         ArrayList<Dessert> desserts = new ArrayList<>();
         ArrayList<Dessert> shopWindow = new ArrayList<>();
         desserts.add(new Cake("торт с клубникой", 23.15f, 215));
@@ -30,7 +31,7 @@ public class Main{
             }
             switch (x) {
                 case 1:
-                    MenuController.createDessert(desserts);
+                    mc.createDessert(desserts);
                     break;
 
                 case 2:
@@ -38,11 +39,11 @@ public class Main{
                     break;
 
                 case 3:
-                    ShopWindow.SumPrice(shopWindow);
+                    sw.SumPrice(shopWindow);
                     break;
                 case 4:
                     System.out.println("отсортированная по цене витрина:");
-                    ShopWindow.sortDesserts(shopWindow);
+                    sw.sortDesserts(shopWindow);
                     break;
 
                 case 5:
@@ -50,13 +51,13 @@ public class Main{
                     break;
 
                 case 6:
-                    int size = shopWindow.size();
-                    if (size > 0){
-                        ShopWindow.deleteDessert(shopWindow);
-                    }
-                    else{
-                        System.out.println("витрина пуста");
-                    }
+//                    int size = shopWindow.size();
+//                    if (size > 0){
+                        sw.deleteDessert(shopWindow);
+//                    }
+//                    else{
+//                        System.out.println("витрина пуста");
+//                    }
                     break;
                 case 7:
                     Menu.printList(desserts);
