@@ -1,6 +1,8 @@
 package desserts;
 
-public class Dessert {
+import java.io.Serializable;
+
+public class Dessert implements Serializable {
     protected String name;
     protected float price;
     protected int calories;

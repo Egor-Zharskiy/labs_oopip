@@ -4,16 +4,17 @@ import java.util.*;
 
 public class ShopWindow {
 
-    public void fillShop(ArrayList<Dessert> desserts, ArrayList<Dessert> shopWindow){
+    public void fillShop(ArrayList<Dessert> desserts, ArrayList<Dessert> shopWindow) {
+        Menu menu = new Menu();
         System.out.println("выберите десерт из списка, который вы бы хотели добавить на витрину");
         int choice = 0, size = desserts.size();
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("0 - выход из добавления десертов.");
 
-        while(true) {
+        while (true) {
             try {
-                Menu.printList(desserts);
+                menu.printList(desserts);
                 choice = Integer.parseInt(scanner.nextLine());
                 shopWindow.add(desserts.get(choice - 1));
                 break;
@@ -33,15 +34,16 @@ public class ShopWindow {
         }
     }
 
-    public void SumPrice(ArrayList<Dessert> desserts){
+    public void SumPrice(ArrayList<Dessert> desserts) {
         float sum = 0f;
-        for(Dessert dessert : desserts){
+        for (Dessert dessert : desserts) {
             sum += dessert.getPrice();
         }
         System.out.println("цена витрины = " + sum + "$");
     }
 
-    public void sortDesserts(ArrayList<Dessert> desserts){
+    public void sortDesserts(ArrayList<Dessert> desserts) {
+        Menu menu = new Menu();
         desserts.sort(new Comparator<Dessert>() {
             @Override
             public int compare(Dessert o1, Dessert o2) {
@@ -49,32 +51,32 @@ public class ShopWindow {
             }
         });
 
-        Menu.printList(desserts);
+        menu.printList(desserts);
     }
-//  сделать трай кетч
-    public void findDessert(ArrayList<Dessert> desserts){
+
+    public void findDessert(ArrayList<Dessert> desserts) {
         Scanner scan = new Scanner(System.in);
         System.out.println("введите диапазон калорий");
         int minCal, maxCal;
         boolean flag = true;
 
-            while(true) {
-                try{
-                    System.out.println("введите нижнюю границу диапазона");
-                    minCal = Integer.parseInt(scan.nextLine());
-                    System.out.println("введите верхнюю границу диапазона");
-                    maxCal = Integer.parseInt(scan.nextLine());
-                    if(minCal < 0 || maxCal < 0 || minCal > maxCal) throw new Exception1(this.toString());
-                    break;
-                } catch (NumberFormatException e){
-                    System.out.println("Неверный формат ввода");
-                } catch (Exception1 e) {
-                    System.out.println("Неверный ввод калорий");
-                }
+        while (true) {
+            try {
+                System.out.println("введите нижнюю границу диапазона");
+                minCal = Integer.parseInt(scan.nextLine());
+                System.out.println("введите верхнюю границу диапазона");
+                maxCal = Integer.parseInt(scan.nextLine());
+                if (minCal < 0 || maxCal < 0 || minCal >= maxCal) throw new Exception1(this.toString());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Неверный формат ввода");
+            } catch (Exception1 e) {
+                System.out.println("Неверный ввод калорий");
             }
+        }
 
-        for(Dessert ds: desserts){
-            if (ds.getCalories() >= minCal && ds.getCalories() <= maxCal){
+        for (Dessert ds : desserts) {
+            if (ds.getCalories() >= minCal && ds.getCalories() <= maxCal) {
                 if (flag)
                     flag = false;
                 System.out.println(ds + " входит в диапазон");
@@ -84,19 +86,20 @@ public class ShopWindow {
             System.out.println("ни один десерт не подходит под заданный диапазон");
     }
 
-    public void  deleteDessert(ArrayList<Dessert> shopWindow){
+    public void deleteDessert(ArrayList<Dessert> shopWindow) {
         Scanner scanner = new Scanner(System.in);
+        Menu menu = new Menu();
         int x;
 
         try {
             if (shopWindow.size() == 0)
                 throw new ZeroLength(this.toString());
-        }catch (ZeroLength e) {
+        } catch (ZeroLength e) {
             System.out.println("Список пуст");
             return;
         }
 
-        Menu.printList(shopWindow);
+        menu.printList(shopWindow);
         System.out.println("введите номер десерта для удаления");
 
         try {
@@ -104,21 +107,14 @@ public class ShopWindow {
             shopWindow.remove(x - 1);
             System.out.println("Удалено");
             System.out.println("новый список десертов:");
-            Menu.printList(shopWindow);
-        }catch (NumberFormatException e){
+            menu.printList(shopWindow);
+        } catch (NumberFormatException e) {
             System.out.println("Значение введено некорректно");
-        }catch (IndexOutOfBoundsException e){
+        } catch (IndexOutOfBoundsException e) {
             System.out.println("Введенный номер не соответствует ни одному из индексов списка");
+        } finally {
+
         }
-//        do {
-//            x = scanner.nextInt();
-//            if (x <= 0 || x > size) {
-//                System.out.println("введен неверный номер десерта");
-//            } else
-//                flag = false;
-//        } while (flag);
-//
-//        shopWindow.remove(x - 1);
 
 
     }
