@@ -4,12 +4,13 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class FileIO {
-    public void Read(ArrayList<Dessert> desserts, ArrayList<Dessert> ShopWindow) {
+    public void View() {
 
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data.bin"))) {
-            desserts = (ArrayList<Dessert>) ois.readObject();
-            ShopWindow = (ArrayList<Dessert>) ois.readObject();
-
+            ArrayList<Dessert> desserts = (ArrayList<Dessert>) ois.readObject();
+            ArrayList<Dessert> ShopWindow = (ArrayList<Dessert>) ois.readObject();
+            System.out.println("список всех десертов:" + desserts);
+            System.out.println("Витрина:" + ShopWindow);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -26,5 +27,22 @@ public class FileIO {
             e.printStackTrace();
         }
 
+    }
+
+    public ArrayList<ArrayList<Dessert>> Read() {
+        ArrayList<Dessert> desserts = new ArrayList<>();
+        ArrayList<Dessert> ShopWindow = new ArrayList<>();
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data.bin"))) {
+            desserts = (ArrayList<Dessert>) ois.readObject();
+            ShopWindow = (ArrayList<Dessert>) ois.readObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        ArrayList<ArrayList<Dessert>> dessertList = new ArrayList<>();
+        dessertList.add(desserts);
+        dessertList.add(ShopWindow);
+        return dessertList;
     }
 }

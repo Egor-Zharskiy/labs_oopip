@@ -19,7 +19,6 @@ public class Main {
         desserts.add(new Cake("торт с клубникой", 23.15f, 215));
         desserts.add(new Truffle("трюфель с посыпкой", 24.5f, 400));
         desserts.add(new Maffin("маффин с шоколадом", 100.05f, 500));
-        file.Write(desserts, shopWindow);
         int x;
         boolean flag = true;
 
@@ -34,45 +33,58 @@ public class Main {
             }
             switch (x) {
                 case 1:
-                    mc.createDessert(desserts);
-                    file.Write(desserts, shopWindow);
+                    file.View();
                     break;
-
                 case 2:
-                    file.Read(desserts, shopWindow);
-                    sw.fillShop(desserts, shopWindow);
                     file.Write(desserts, shopWindow);
                     break;
-
                 case 3:
-                    file.Read(desserts, shopWindow);
-                    sw.SumPrice(shopWindow);
+                    ArrayList<ArrayList<Dessert>> lists = file.Read();
+                    desserts = lists.get(0);
+                    shopWindow = lists.get(1);
+
+
                     break;
                 case 4:
-                    System.out.println("отсортированная по цене витрина:");
-                    file.Read(desserts, shopWindow);
-                    sw.sortDesserts(shopWindow);
+                    mc.createDessert(desserts);
+//                    file.Write(desserts, shopWindow);
                     break;
 
                 case 5:
-                    file.Read(desserts, shopWindow);
-                    sw.findDessert(shopWindow);
+//                    file.Read(desserts, shopWindow);
+                    sw.fillShop(desserts, shopWindow);
+//                    file.Write(desserts, shopWindow);
                     break;
 
                 case 6:
-                    file.Read(desserts, shopWindow);
-                    sw.deleteDessert(shopWindow);
-                    file.Write(desserts, shopWindow);
+//                    file.Read(desserts, shopWindow);
+                    sw.SumPrice(shopWindow);
                     break;
                 case 7:
-                    file.Read(desserts, shopWindow);
+                    System.out.println("отсортированная по цене витрина:");
+//                    file.Read(desserts, shopWindow);
+                    sw.sortDesserts(shopWindow);
+                    break;
+
+                case 8:
+//                    file.Read(desserts, shopWindow);
+                    sw.findDessert(shopWindow);
+                    break;
+
+                case 9:
+//                    file.Read(desserts, shopWindow);
+                    sw.deleteDessert(shopWindow);
+//                    file.Write(desserts, shopWindow);
+                    break;
+                case 10:
+//                    file.Read(desserts, shopWindow);
                     menu.printList(desserts);
                     break;
-                case 8:
-                    file.Read(desserts, shopWindow);
+                case 11:
+//                    file.Read(desserts, shopWindow);
                     menu.printList(shopWindow);
                     break;
-                case 9:
+                case 12:
                     flag = false;
                     break;
                 default:
